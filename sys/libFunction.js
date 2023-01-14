@@ -76,5 +76,20 @@ async function GetDetail(){
 
 return txt;
 }
+async function GetDetailwithIP(strIP){
 
-module.exports = { GetDateTime, SendLine,GetIPinfo,GetIPv6,GetDetail,GetIP };
+    const url = await fetch("https://ipinfo.io/"+strIP+"?token="+process.env.TOKENip)
+    const result = await url.json()
+    let txt = 'IP(info) :'+ result.ip +  '\r\n'
+    + "City : " + result.city + '\r\n'
+    + "region : " + result.region + '\r\n'
+    + "country : " + result.country + '\r\n'
+    + "Latitude, Longitude : " + result.loc + '\r\n'
+    + "org : " + result.org + '\r\n'
+    + "postal : " + result.postal + '\r\n'
+    + "timezone : " + result.timezone + '\r\n'
+    + "Google Map (IpInfo) : https://www.google.com/maps/?q=" + result.loc
+
+return txt;
+}
+module.exports = { GetDateTime, SendLine,GetIPinfo,GetIPv6,GetDetail,GetIP,GetDetailwithIP };
