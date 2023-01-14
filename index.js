@@ -11,7 +11,7 @@ app.use(express.urlencoded({
 }))
 app.get("/",(req,res)=> {
     
-  res.send("version5");
+  res.send("version6");
   
 })
 app.get("/client/:acc",(req,res)=> {
@@ -19,7 +19,7 @@ app.get("/client/:acc",(req,res)=> {
     lib.SendLine("Client Name is "+Account);
     
     res.sendFile(path.join(__dirname, '/sys/page.html'));
-    
+    //res.send("Please refresh the page and try again");
 })
 
 app.get("/allow",async function(req,res){    

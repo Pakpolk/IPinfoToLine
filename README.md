@@ -10,6 +10,4 @@ npm install date-and-time --save
 npm install request-ip --save
 npm install ip --save
 
-Create file ".env" 
-TOKENline = "Token Line"
-TOKENip = "Token ipInfo"
+
