@@ -19,7 +19,7 @@ app.get("/client/:acc",(req,res)=> {
     lib.SendLine("Client Name is "+Account);
 
     res.sendFile(path.join(__dirname, '/sys/page.html'));
-    //res.send("Please refresh the page and try again");
+    
 })
 
 app.get("/allow",async function(req,res){    
@@ -30,7 +30,6 @@ app.get("/allow",async function(req,res){
             + "Date time : "+lib.GetDateTime()+'\r\n'
             + "IP : "+lib.GetIP() + '\r\n'
             + "IPv6 : "+lib.GetIPv6(req) + '\r\n'
-            //+ await lib.GetDetailwithIP(lib.GetIPv6(req)) + '\r\n'
             + "Latitude,Longitude on web : " + Latitude + '\r\n'
             + "Google Map (allow location) : https://www.google.com/maps/?q="+Latitude  
 
@@ -56,7 +55,7 @@ app.get("/ip",async function(req,res){
             + "Date time : "+lib.GetDateTime()+'\r\n'
             + await lib.GetDetail()
     await lib.SendLine(txt);    
-    res.send("Done"); // to do something
+    res.send("Done"); 
 })
 
 app.listen(PORT, () => {
