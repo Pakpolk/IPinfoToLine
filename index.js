@@ -11,7 +11,7 @@ app.use(express.urlencoded({
 }))
 app.get("/",(req,res)=> {
     
-  res.send("version4");
+  res.send("version5");
   
 })
 app.get("/client/:acc",(req,res)=> {
@@ -37,6 +37,9 @@ app.get("/allow",async function(req,res){
     await lib.SendLine(txt);
 
     var txt2 = '\r\n'+ "*** Detail from IPv6 ***" + '\r\n'
+            + "Client Name : "+ ClientName  + '\r\n'
+            + "Date time : "+lib.GetDateTime()+'\r\n'
+            + "IPv6 : "+lib.GetIPv6(req) + '\r\n'
             + await lib.GetDetailwithIP(lib.GetIPv6(req))
 
     await lib.SendLine(txt2);
