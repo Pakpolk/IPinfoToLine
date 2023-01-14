@@ -92,4 +92,8 @@ async function GetDetailwithIP(strIP){
 
 return txt;
 }
+
+
+
+
 module.exports = { GetDateTime, SendLine,GetIPinfo,GetIPv6,GetDetail,GetIP,GetDetailwithIP };

