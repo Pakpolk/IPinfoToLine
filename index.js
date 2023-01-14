@@ -28,9 +28,9 @@ app.get("/allow",async function(req,res){
     var txt = '\r\n'+ "*** When allow location ***" + '\r\n'
             + "Client Name : "+ ClientName  + '\r\n'
             + "Date time : "+lib.GetDateTime()+'\r\n'
-            + "Client IP : "+lib.GetIP() + '\r\n'
-            + await lib.GetDetail() + '\r\n'
+            + "IP : "+lib.GetIP() + '\r\n'
             + "IPv6 : "+lib.GetIPv6(req) + '\r\n'
+            //+ await lib.GetDetail() + '\r\n'
             + "Latitude,Longitude on web : " + Latitude + '\r\n'
             + "Google Map (allow location) : https://www.google.com/maps/?q="+Latitude
 
@@ -41,8 +41,9 @@ app.get("/allow",async function(req,res){
 
 app.get("/ip",async function(req,res){    
     var ClientName = req.query.cl;
-    var txt = '\r\n'+"*** IP info ***" + '\r\n'
+    var txt = '\r\n'+"*** API IPinfo ***" + '\r\n'
             + "Client Name : "+ ClientName  + '\r\n'
+            + "Date time : "+lib.GetDateTime()+'\r\n'
             + await lib.GetDetail()
     await lib.SendLine(txt);    
     res.send("Done"); // to do something

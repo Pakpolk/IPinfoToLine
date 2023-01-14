@@ -61,9 +61,9 @@ return jsonResponse.ip;
 
 async function GetDetail(){
     const request = await fetch("https://ipinfo.io/json?token="+process.env.TOKENip)
-    const jsonResponse = await request.json()
-    const url = await fetch("https://ipinfo.io/"+jsonResponse.ip+"?token="+process.env.TOKENip)
-    const result = await url.json()
+    //const jsonResponse = await request.json()
+    //const url = await fetch("https://ipinfo.io/"+jsonResponse.ip+"?token="+process.env.TOKENip)
+    const result = await request.json()
     let txt = 'IP(info) :'+ result.ip +  '\r\n'
     + "City : " + result.city + '\r\n'
     + "region : " + result.region + '\r\n'
