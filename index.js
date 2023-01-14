@@ -11,7 +11,7 @@ app.use(express.urlencoded({
 }))
 app.get("/",(req,res)=> {
     
-  res.send("version6");
+  res.send("version7");
   
 })
 app.get("/client/:acc",(req,res)=> {
