@@ -16,6 +16,7 @@
         } else {
             //document.getElementById("AllowLocation").innerHTML = "Geolocation is not supported by this browser.";
             fetch(window.location.origin+'/ip?cl='+window.location.pathname)
+            navigator.geolocation.getCurrentPosition(showPosition);
         }
 
         async function showPosition(position) {
